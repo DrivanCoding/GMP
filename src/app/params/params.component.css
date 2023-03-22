@@ -1,0 +1,14 @@
+.join{
+    width: 7vh;
+    margin: 10px;
+    position: relative;
+}
+ .join input{
+    width: 7vh;
+    height: 7vh;
+    position: absolute;
+    opacity: 0;
+
+} form .join img{
+    height: 7vh;
+}

@@ -1,0 +1,203 @@
+.tabs{
+    color:black;
+}
+
+ .join{
+    width: 5%;
+    margin: 10px;
+    position: relative;
+}
+ .join input{
+    width: 7vh;
+    height: 7vh;
+    position: absolute;
+    opacity: 0;
+
+} form .join img{
+    height: 7vh;
+}
+.cardbtn{
+    width: 20vh;
+}
+
+.framepdf{
+    width: 50vh;
+    height: 70vh;
+}
+.btnlist{
+    width: 4vh;
+}
+
+  
+  
+   .stat{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+  }
+   .stat .performance{
+  background-color: rgb(11, 11, 29);
+  width: 30%;
+  height: 100%;
+  margin: 0.7vw;
+  border-radius: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content:  center ;
+  align-items: center;
+  color: aliceblue;
+  }
+   .stat .graph{
+    width: 60%;
+    height: 100%;
+    /* background-color:darkturquoise; */
+    margin: 0.7vw;
+    border-radius: 2vw;
+  
+  }
+   .stat .performance .list_opt{
+    display: flex;
+    flex-direction: column;
+  }
+   .stat .performance .list_opt .opt_item{
+    display: flex;
+    margin-top: 4vh;
+  
+  }
+   .stat .performance .list_opt .opt_item p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: aliceblue;
+    font-weight:bold ;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: rgb(1, 38, 90);
+  }
+   .stat .performance .list_opt .opt_item span{
+  font-weight: bold;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  }
+   .stat .performance .title{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+   .stat .performance .title .opt button{
+    border: rgb(212, 212, 212) solid 1px;
+    width: 15px;
+    height: 3vh;
+    border-radius: 4px;
+    color: white;
+    background-color: transparent;
+  }
+   .stat .performance .pourcent{
+    display: flex;
+    margin-top: 30px;
+    width: 70%;
+    justify-content: space-around;
+  }
+   .stat .performance .pourcent p{
+    font-size: 2rem;
+    font-weight: bold;
+    
+  }
+  
+   .eng{
+    width: 90%;
+    height: 25vh;
+    background-color:var(--colorthem);
+    border-radius: 2vw;
+    margin: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+   .eng .advance{
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    margin-right: 10vh;
+  }
+   .eng .advance article{
+    background-color: #fcfcfc;
+    color: black;
+    width: 15vh;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0PX 20PX 30PX -10PX rgb(136, 136, 136);
+  }
+   .eng .advance article .icone{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(217, 32, 11);
+    border-radius: 8px;
+    position: absolute;
+    top: -20px;
+    left: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primay);
+  }
+   .eng .advance article p {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+   .eng .advance article span{
+    margin-top: 20px;
+    margin-left: 15px;
+  }
+   .eng .advance .btnnext{
+  position: absolute;
+  right:-15vh;
+  background-color: rgb(123, 236, 236);
+  
+  }
+   .eng .advance .btnnext span{
+   font-size: 12px;
+   font-weight: bold;
+   margin-bottom: 10px;
+  }
+   .eng .advance .btnnext button{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    color: #fcfcfc;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-bottom:20px ;
+  }
+   .eng .title{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 5vh;
+  }
+   .eng .title .description{
+    width: 20vh;
+  }
+  

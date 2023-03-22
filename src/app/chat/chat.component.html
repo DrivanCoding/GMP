@@ -1,0 +1,21 @@
+<div class="contentmsg">
+   
+        <div class="msg_item" >
+            <div class="msg" *ngFor="let msg of msgs" [ngStyle]="{float: positionmsg(msg.iduser)}" [ngClass]="{'list-group-item' :true, 'list-group-item-primary': profile.message.iduser==msg.iduser, 'list-group-item-success': profile.message.iduser != msg.iduser}" >
+                <div class="nom">
+                    <div class="img"> <img src="../assets/uploads/{{msg.img}}"alt=""></div>
+                    <h3>{{msg.nomuser}}</h3>
+                </div>
+                <hr>
+                <div class="content"><p>
+                    {{msg.msg}}
+                </p></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form">
+        <form (ngSubmit)="sendmsg(formdata.value)" #formdata="ngForm">
+<div class="msg"><textarea  placeholder="write your text ..." name="msg" ngModel></textarea></div>
+<div class="btn_send"><button type="submit" name="send"><img src="../../assets/img/icons8-avion-en-papier-96.png" alt=""></button></div>
+    </form></div>

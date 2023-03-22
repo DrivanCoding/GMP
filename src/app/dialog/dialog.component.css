@@ -1,0 +1,21 @@
+.input{
+    margin-left: 12px;
+}
+.mat-typography {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mat-typography .img img{
+    width: 250px;
+    height: 250px;
+    box-shadow: 0px 0px 20px 0px gray;
+    margin: 20px;
+}
+.mat-typography .detaill  p{
+    font-size: 25PX;
+}
+h2,h1{
+    text-align: center;
+    font-size: 30px;
+}

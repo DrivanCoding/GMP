@@ -1,0 +1,414 @@
+<mat-tab-group class="tabs" [color]="'primary'" [backgroundColor]="'primary'">
+  <mat-tab color="primary" label="Dashbord" class="mattab"> 
+    <div class="stat">
+      <div class="performance">
+          
+            <canvas id="graphetat"   style="width: 70%;"></canvas>
+          
+      </div>
+      <div class="graph">
+        <canvas id="graphprojet"   style="width: 50%;"></canvas>
+      </div>
+  </div>
+  <div class="eng">
+    <div class="title">
+        <div class="titlename">
+            <h3>Statistique</h3>
+        </div>
+        <div class="description"><p>
+           Ensemenble des projet
+        </p></div>
+    </div>
+    <div class="advance">
+  <article>
+    <div class="icone"></div>
+   <span>Resources</span>
+   <p> {{nbrres}} </p>
+  </article>
+  <article>
+    <div class="icone"></div>
+    <span>Sprints</span>
+    <p>{{nbrsprint}}</p>
+   </article>
+   <article>
+    <div class="icone"></div>
+    <span>documents</span>
+    <p>{{nbrdoc}}</p>
+   </article>
+   <article>
+    <div class="icone"></div>
+    <span>taches</span>
+    <p>{{nbrtache}}</p>
+   </article>
+
+</div>
+</div>
+
+  </mat-tab>
+    <mat-tab label="Projet"> 
+      
+      <nav class="navbar  navapp">
+        <div class="container-fluid">
+          <form class="navbar-brand" href="#">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addprojet"  >
+              <img src="../../assets/img/icons8-gestion-de-projet-48.png" alt="">
+            </button>
+          </form>
+          <form class="d-flex" role="search">
+            <input type="text" class="form-control" id="validationTooltip01" placeholder="Filtre projet" #filterdata >
+          </form>
+        </div>
+      </nav> 
+      <table class="table">  
+        <tr>
+          <th>Titre</th>
+          <th>Date debut</th>
+          <th>Date fin</th>
+          <th>Description</th>
+          <th>parametre</th>
+        </tr> 
+        <tr *ngFor="let projet of projets">
+          <td>{{projet.titreprojet}}</td>
+          <td>{{projet.dateDebutprojet}}</td>
+          <td>{{projet.dateFinprojet}}</td>
+          <td>{{projet.description}}</td>
+          <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
+            <img src="../../assets/img/icons8-paramètres-administrateur-homme-96.png" class="btnlist" alt="">
+          </button>
+          <button class="btn btn-outline-danger">
+            <img src="../../assets/img/icons8-supprimer-pour-toujours-48.png" class="btnlist" alt="">
+          </button></td>
+        </tr>
+      </table>  
+
+    </mat-tab>
+
+    
+</mat-tab-group>
+  
+<div class="modal fade" id="addprojet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter un projet </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 needs-validation" (ngSubmit)="addprojet(dataform)" #dataform="ngForm" novalidate>
+          <div class="col-md-4 position-relative">
+            <label for="validationTooltip01" class="form-label">Titre</label>
+            <input type="text" class="form-control" id="validationTooltip01" name="titreprojet" required ngModel>
+          </div>
+          <div class="col-md-4 position-relative">
+          <label for="validationCustom04" class="form-label" >Assigne à</label>
+            <select class="form-select" id="validationCustom04" name="idequipe" required ngModel>
+              <option selected disabled value="" >Choose...</option>
+                <option value={{eq.idequipe}} *ngFor="let eq of equipe">{{eq.nomequipe}}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Date Debut</label>
+            <input type="date" class="form-control" name="dateDebutprojet" id="inputEmail4"  required ngModel>
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label" required>Date de Fin</label>
+            <input type="date" class="form-control" name="dateFinprojet" id="inputPassword4" required ngModel>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label"  >description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" style="resize:none;" ngModel></textarea>
+        </div>
+        
+        <div class="col-md-4 position-relative">
+          <label for="validationCustom04" class="form-label" >Etat projet</label>
+            <select class="form-select" id="validationCustom04" name="etatprojet" required ngModel>
+              <option selected disabled value=""  >Choose...</option>
+              <option value="A Faire">A Faire</option>
+              <option value="En cours">En cours</option>
+            </select>
+          </div>
+          <div class="col-md-4 position-relative">
+            <label for="validationCustom04" class="form-label" >budjet</label>
+            <input type="text" class="form-control" name="butjet" id="inputPassword4" required ngModel>
+            </div>
+        
+            <button type="submit" class="btn btn-primary">CREER</button>
+        
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- projet item -->
+
+
+<div class="modal fade" id="projetitem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel" *ngIf="projet">{{projet.titreprojet}} </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <mat-tab-group class="tabs" [color]="'primary'" [backgroundColor]="'primary'">
+      
+        <!-- sprint -->
+          <mat-tab label="Sprint">
+            <br>   
+            <br>   
+            <div class="d-flex align-items-start">
+              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Ajouter</button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Liste </button>
+              </div>
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+
+                  <form class="row g-3 needs-validation" (ngSubmit)="addsprint(dataeform)" #dataeform="ngForm" novalidate>
+                    <div class="col-md-4 position-relative">
+                      <label for="validationTooltip01" class="form-label">Titre</label>
+                      <input type="text" class="form-control" id="validationTooltip01" name="titremodule" required ngModel>
+                    </div>
+                    <div class="col-md-4 position-relative">
+            
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">Date Debut</label>
+                      <input type="date" class="form-control" name="dateDebutmodule" id="inputEmail4"  required ngModel>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label" required>Date de Fin</label>
+                      <input type="date" class="form-control" name="dateFinmodule" id="inputPassword4" required ngModel>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputAddress" class="form-label"  >description</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" style="resize:none;" ngModel></textarea>
+                  </div>
+                  
+                      <button type="submit" class="btn btn-primary">Ajouter</button>
+                  
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                  <table class="table">   
+                    <tr *ngFor="let sprint of sprints">
+                      <td>{{sprint.titremodule}}</td>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
+                        voir
+                      </button>
+                    </tr>
+                  </table>  
+                </div>
+              </div>
+            </div>        
+      
+          </mat-tab>
+
+<!-- ressource -->
+
+          <mat-tab label="Ressource"> 
+            <div class="content">
+              <br>   
+              <br>   
+            <div class="d-flex align-items-start">
+              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Ajouter</button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Liste </button>
+              </div>
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                  <form class="row g-3 needs-validation" (ngSubmit)="addres(dataformres)" #dataformres="ngForm" novalidate>
+                    <div class="col-md-4 position-relative">
+                      <label for="validationTooltip01" class="form-label">Titre</label>
+                      <input type="text" class="form-control" id="validationTooltip01" name="titreres" required ngModel>
+                    </div>
+                  
+                  <div class="col-md-4 position-relative">
+                    <label for="validationCustom04" class="form-label" >Type</label>
+                      <select class="form-select" id="validationCustom04" name="type" required ngModel>
+                        <option selected disabled value=""  >Choose...</option>
+                        <option value="Materiel">Materiel</option>
+                        <option value="Logiciel">Logiciel</option>
+                      </select>
+                    </div>
+                    <div class="col-12 ">
+                      <label for="validationCustom04" class="form-label" >Valeur</label>
+                      <input type="text" class="form-control" name="valeur" id="inputPassword4" required ngModel>
+                      </div>
+                  
+                      <button type="submit" class="btn btn-primary">Ajouter</button>
+                  
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                  <table class="table">   
+                    <tr *ngFor="let res of ress">
+                      <td>{{res.titreres}}</td>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
+                        voir
+                      </button>
+                    </tr>
+                  </table>  
+                </div>
+              </div>
+            </div>
+          </div>
+          </mat-tab>
+          <!-- documents -->
+          <mat-tab label="Documents"> 
+            <nav class="navbar  navapp">
+              <div class="container-fluid">
+                <form class="navbar-brand" href="#">
+                  <div class="join"><input type="file" name="" (change)="uploaded($event)" id=""><img src="../../assets/img/icons8-ajouter-au-presse-papiers-96.png" alt=""></div>
+                </form>
+                <form class="d-flex" role="search">
+                  <input type="text" class="form-control" id="validationTooltip01" placeholder="Filtre user" #filterdata >
+                </form>
+              </div>
+            </nav> 
+              <div class="container">
+                <button class="cardbtn btn" *ngFor="let doc of docs" (click)="getdoc(doc.iddoc)" data-bs-toggle="modal" data-bs-target="#opendocs">
+                  <div class="imgcart">
+                      <img src="../../assets/img/icons8-document-96.png" alt="file docs" >
+                  </div>
+                  <div class="tit">
+                    <p>{{doc.nomdoc}}</p>
+                  </div>
+                </button>
+
+              </div>
+      
+          </mat-tab>
+
+          <!-- Tache  -->
+          <mat-tab label="Taches"> 
+            <div class="content">
+              <br>   
+              <br>   
+            <div class="d-flex align-items-start">
+              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Ajouter</button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Liste </button>
+              </div>
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                  <form class="row g-3 needs-validation" (ngSubmit)="newtache(dataformtache.value)" #dataformtache="ngForm" novalidate>
+                    <div class="col-md-4 position-relative">
+                      <label for="validationTooltip01" class="form-label">Titre</label>
+                      <input type="text" class="form-control" id="validationTooltip01" name="titletache" required ngModel>
+                    </div>
+                    <div class="col-md-4 position-relative">
+                    <label for="validationCustom04" class="form-label" >Assigne à</label>
+                      <select class="form-select" id="validationCustom04" name="iduser" required ngModel>
+                        <option selected disabled value="" >Choose...</option>
+                          <option value={{member.iduser}} *ngFor="let member of userprojet.data"> {{member.nomuser}} {{member.prenomuser}}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4 position-relative">
+                      <label for="validationCustom04" class="form-label" >Module</label>
+                        <select class="form-select" id="validationCustom04" name="idsprint" required ngModel>
+                          <option selected disabled value="" >Choose...</option>
+                            <option value={{sprint.idsprint}} *ngFor="let sprint of sprints"> {{sprint.titremodule}}</option>
+                        </select>
+                      </div>
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">Date Debut</label>
+                      <input type="date" class="form-control" name="dateDebuttache" id="inputEmail4"  required ngModel>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label" required>Date de Fin</label>
+                      <input type="date" class="form-control" name="dateFintache" id="inputPassword4" required ngModel>
+                    </div>
+                    
+                  
+                  <div class="col-md-4 position-relative">
+                    <label for="validationCustom04" class="form-label" >Etat Tache</label>
+                      <select class="form-select" id="validationCustom04" name="etattache" required ngModel>
+                        <option selected disabled value=""  >Choose...</option>
+                        <option value="A Faire">A Faire</option>
+                        <option value="En cours">En cours</option>
+                        <option value="En cours">Terminer</option>
+                      </select>
+                    </div>
+                  
+                      <button type="submit" class="btn btn-primary">CREER</button>
+                  
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                  <nav class="navbar  navapp">
+                    <div class="container-fluid">
+                      
+                      <form class="d-flex" role="search">
+                        <input type="text" class="form-control form-control-success" id="validationTooltip01" placeholder="Filtre projet" #filterdata >
+                      </form>
+                    </div>
+                  </nav> 
+                  <table class="table">   
+                    <tr *ngFor="let tache of taches">
+                      <td>{{tache.titletache}}</td>
+                      <td>{{tache.titretache}}</td>
+                      <td>{{tache.titretache}}</td>
+                      <td>{{tache.titretache}}</td>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
+                        voir
+                      </button>
+                    </tr>
+                  </table>  
+                </div>
+              </div>
+            </div>
+          </div>
+          </mat-tab>
+      </mat-tab-group>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+<script>
+  const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+if (toastTrigger) {
+  toastTrigger.addEventListener('click', () => {
+    const toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
+  })
+}
+</script>
+
+
+<div class="modal fade" id="opendocs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter un projet </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <iframe src="../../assets/uploads/5141484.png" frameborder="0" classe="framepdf">
+                
+                </iframe>
+            </div>
+            
+          </div>
+        </div>
+      </div>

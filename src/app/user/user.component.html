@@ -1,0 +1,215 @@
+<mat-tab-group dynamicHeight [color]="'primary'" [backgroundColor]="'primary'" class="tabs">
+
+    <mat-tab color="primary" label="Equipe" class="mattab"> 
+      <nav class="navbar  navapp">
+        <div class="container-fluid">
+          <div class="navbar-brand" href="#">
+            
+          </div>
+          <form  class="d-flex" role="search" (ngSubmit)="addequipe(dataequipe)" #dataequipe="ngForm">
+            <input type="email" class="form-control" id="inputEmail4" placeholder="Nom equipe" name="nomequipe" required ngModel>
+             <button type="submit" class="btn btn-outline-primary"  ><img src="../../assets/img/icons8-management-en-développement-commercial-48.png" alt="">
+          Ajouter une equipe
+        </button>
+        </form>
+        </div>
+      </nav> 
+      <div class="equipe">
+        
+    </div>
+      <table class="table table-primary">
+        <tr>
+          <th>Nom Equipe</th>
+          <th>Option</th>
+        </tr>
+        <tr *ngFor="let equip of equipe">
+          <td>{{equip.nomequipe}}</td>
+          <td> <button  class="btn btn-outline-danger" (click)="delequipe(equip.idequipe)"> <img src="../../assets/img/icons8-supprimer-pour-toujours-48.png" alt=""> </button> </td>
+        </tr>
+      </table>
+     
+
+    </mat-tab>
+    <mat-tab label="Personel" class="mattab">
+      <nav class="navbar  navapp">
+        <div class="container-fluid">
+          <div class="navbar-brand" href="#">
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#adduser"><img src="../../assets/img/icons8-ajouter-un-utilisateur-homme-48.png" alt=""></button>
+          </div>
+          <form class="d-flex" role="search">
+            <input type="text" class="form-control" id="validationTooltip01" placeholder="Filtre user" #filterdata (change)="filteruser(filterdata.value)">
+          </form>
+        </div>
+      </nav> 
+     
+      
+      
+       <div class="userlist"> 
+        <mat-grid-list cols="3" rowHeight="" >
+        <mat-grid-tile *ngFor="let user of users">
+          <mat-card class="example-card">
+            <mat-card-header>
+            <button (click)="openDialoguser('voir',user.iduser)" mat-button><img class="icon" src="../../assets/img/icons8-eye-48.png"></button>
+            <mat-card-title>{{user.nomuser}} {{user.prenomuser}}  </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="../../assets/uploads/{{user.img}}" class="profil" alt="Photo of a Shiba Inu">
+            <mat-card-actions>
+              <button type="button" (click)="modifuser(user.iduser)" mat-button  data-bs-toggle="modal" data-bs-target="#modifier">
+                <img class="icon" src="../../assets/img/icons8-crayon-48.png">
+                </button>
+              <button mat-button  (click)="deleteuser(user.iduser)"><img class="icon" src="../../assets/img/icons8-supprimer-pour-toujours-48.png"></button>
+            </mat-card-actions>
+          </mat-card>
+     
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+</mat-tab>
+
+    
+</mat-tab-group>
+<div class="modal fade" id="adduser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter un Utilisateur </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 needs-validation" (ngSubmit)="adduser(form)" #form="ngForm"   novalidate>
+          <div class="col-md-4 position-relative">
+               <label for="validationTooltip01" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="validationTooltip01" name="nomuser" required ngModel>
+            <div class="valid-tooltip">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-4 position-relative">
+            <label for="validationTooltip02" class="form-label">Prenom</label>
+            <input type="text" class="form-control" id="validationTooltip02" name="prenomuser" ngModel>
+            <div class="valid-tooltip">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="email" required ngModel>
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label" required>Password</label>
+            <input type="password" class="form-control" id="inputPassword4" name="motedepass" required ngModel>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label" >Address</label>
+            <input type="text" class="form-control" id="inputAddress"name="adress" placeholder="1234 Main St" required ngModel>
+          </div>
+         
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Telephone</label>
+            <input type="tel" class="form-control"  pattern="[0-9]{1-3}-[0-9]{8-9}" placeholder="33-123456789" id="validationCustom03" name="telephone" required ngModel>
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label" >fonction/status</label>
+            <select class="form-select" id="validationCustom04" name="fonction" required ngModel>
+              <option selected disabled value="" >Choose...</option>
+              <option value="chef projet">chef projet</option>
+              <option value="membre projet">membre projet</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid state.
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label" >Equipe</label>
+            <select class="form-select" id="validationCustom04" name="idequipe" required ngModel>
+              <option selected disabled value="" >Choose...</option>
+              <option value={{equip.idequipe}} *ngFor="let equip of equipe">{{equip.nomequipe}}</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid state.
+            </div>
+          </div>
+        
+          <div class="col-12">
+            <label for="files">Ajouter un profil</label>
+            <div class="join"><input type="file" name="files" (change)="getfile($event)" id=""><img src="../../assets/img/icons8-ajouter-une-image-96.png" alt=""></div>
+            
+          </div>
+        <button type="submit" class="btn btn-primary" >Register</button>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modifier" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modifier un Utilisateur</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 needs-validation" (ngSubmit)="updateuser(formup)" #formup="ngForm"   novalidate>
+          <div class="col-md-4 position-relative">
+            <label for="validationTooltip01" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="validationTooltip01" value={{user.nomuser}} name="nomuser"  required ngModel>
+            <div class="valid-tooltip">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-4 position-relative">
+            <label for="validationTooltip02" class="form-label">Prenom</label>
+            <input type="text" class="form-control" id="validationTooltip02" value={{user.prenomuser}} name="prenomuser" ngModel>
+            <div class="valid-tooltip">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" value={{user.email}} name="email" required ngModel>
+          </div>
+          
+          <div class="col-12">
+            <label for="inputAddress" class="form-label" >Address</label>
+            <input type="text" class="form-control" id="inputAddress" name="adress" value={{user.adress}}  placeholder="1234 Main St" required ngModel>
+          </div>
+         
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Telephone</label>
+            <input type="tel" class="form-control"  pattern="[0-9]{1-3}-[0-9]{8-9}" value={{user.telephone}} placeholder="33-123456789" id="validationCustom03" name="telephone" required ngModel>
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label" >fonction/status</label>
+            <select class="form-select" id="validationCustom04" value={{user.fonction}} name="fonction" required ngModel>
+              <option selected disabled value="" >Choose...</option>
+              <option value="chef projet">chef projet</option>
+              <option value="membre projet">membre projet</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid state.
+            </div>
+          </div>
+      
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

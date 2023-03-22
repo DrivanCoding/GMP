@@ -1,0 +1,107 @@
+
+.contentmsg{
+    width: 90%;
+    height: 70%;
+    background-color: aliceblue;
+    border-radius: 15px;
+    overflow: scroll;
+}
+.contentmsg .msg_item {
+    padding: 10px;
+    width: 100%;
+
+
+}
+.contentmsg .msg_item .msg{
+    width: 50%;
+    border-radius: 10px 10PX 10PX 1PX;
+    padding-left: 5px;
+    padding-right:5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 10px;
+    padding: 15px;
+}
+.contentmsg .msg_item .msg .nom{
+    height: 3vh;
+    width: 15vh;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.contentmsg .msg_item .msg .nom .img img{
+    width: 5vh;
+    border-radius: 100%;
+}
+hr{
+    width: 100%;
+    color: aliceblue;
+    opacity: 0.5;
+}
+h3{
+    margin: 0px;
+}
+.form{
+     width: 90%;
+    height: 20%;
+    background-color:transparent;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+.form form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.form form .join{
+    width: 5%;
+    margin: 10px;
+    position: relative;
+}
+.form form .join input{
+    width: 7vh;
+    height: 7vh;
+    position: absolute;
+    opacity: 0;
+
+}.form form .join img{
+    height: 7vh;
+}
+.form form .msg{
+    width: 70%;
+    margin: 10px;
+}
+.form form .msg textarea{
+    width: 100%;
+    height: 10vh;
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+    background-color:rgb(255, 255, 255);
+    font-size: 20px;
+    resize: none;
+    overflow: hidden;
+    box-shadow: 0PX 0PX 10PX 0PX gainsboro ;
+}
+.form form .btn_send button{
+       margin-left: 20px;
+       background-color: transparent;
+       border: none;
+}
+.form form .btn_send img{
+    height: 7vh;
+}
+.msgrecu{
+    background: aquamarine;
+}
+.msgsend{
+    background-color: green;
+}

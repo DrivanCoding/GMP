@@ -1,0 +1,27 @@
+html, body{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+} 
+
+.centre{
+    margin-top: 50px;
+    flex-grow: 1;
+    
+}
+.fonrmulaire{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}
+
+.status{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+

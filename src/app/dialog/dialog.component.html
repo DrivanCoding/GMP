@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{data.name}} </h1>
+
+<div class="user" *ngIf="data.option == 'voir'">
+<mat-dialog-content class="mat-typography" >
+  <div class="img">
+    <img src="../../assets/uploads/{{data.element.img}}" alt="">
+  </div>
+  <div class="detaill">
+    <p>nom: <span> {{data.element.nomuser}} </span></p> 
+    <p>prenom: <span>{{data.element.prenomuser}}</span></p> 
+    <p>adress: <span>{{data.element.adress}}</span></p> 
+    <p>telephone: <span>{{data.element.telephone}}</span></p> 
+    <p>email: <span>{{data.element.email}}</span></p> 
+    <p>fonction: <span>{{data.element.fonction}}</span></p> 
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="btn btn-danger" mat-dialog-close>Fermer</button>
+</mat-dialog-actions>
+</div>

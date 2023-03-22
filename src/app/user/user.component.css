@@ -1,0 +1,38 @@
+.example-card {
+    max-width: 200px;
+  }
+
+.userlist{
+  width: 100%;
+  height: 70vh;
+  overflow-y: scroll;
+
+}
+.userlist::-webkit-scrollbar{
+  width: 2px;
+}
+.icon{
+  width: 28px;
+  height: 28px;
+}
+.profil{
+  height: 30vh;
+}
+
+.join{
+  width: 5%;
+  margin: 10px;
+  position: relative;
+}
+.join input{
+  width: 100;
+  height: 5vh;
+  position: absolute;
+  opacity: 0;
+
+}
+.join img{
+  height: 5vh;
+}
+
+ 

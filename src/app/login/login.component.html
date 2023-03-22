@@ -1,0 +1,44 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form (ngSubmit)="login(formdata.value)" #formdata="ngForm" *ngIf="opt=='login'" >
+    <h3>Connexion</h3>
+    <label for="username">Email</label>
+    <input type="email" placeholder="Email or Phone" id="username" name="email" ngModel>
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" name="motedepass" ngModel>
+
+    <button type="submit">Log In</button>
+
+</form>
+<form class="row g-3 needs-validation formsign" (ngSubmit)="signin(formdatas.value)" #formdatas="ngForm" *ngIf="opt=='signin'">
+    <h3>Inscription</h3>
+    <div class="col-md-6 position-relative">
+        <label for="username">Nom </label>
+        <input type="text" placeholder="Nom" id="username" name="nomuser" ngModel>
+    </div>
+    <div class="col-md-6 position-relative">
+        <label for="username">Email</label>
+        <input type="email" placeholder="Email " id="username" name="email" ngModel>
+    </div>
+    <div class="col-md-6" >
+        <label for="username">Adress</label>
+        <input type="text" placeholder="Email or Phone" id="username" name="adress" ngModel>
+    </div>
+    <div class="col-md-6">
+        <label for="username">Numero de telephone</label>
+    <input type="text" placeholder="Email or Phone" id="username" name="telephone" ngModel>
+    </div>
+    <div class="col-md-6">
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" name="motedepass" ngModel>
+    </div>
+    <div class="col-md-6">
+        <div class="join "><input type="file" name="files" (change)="getfile($event)"  ><p>Photo profil</p><img class="btn btn-outline-primary" src="../../assets/img/icons8-ajouter-une-image-96.png" alt=""></div>
+        
+      </div>
+    <button type="submit">SignIn</button>
+
+</form>
