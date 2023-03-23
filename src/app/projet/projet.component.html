@@ -58,8 +58,9 @@
             <input type="text" class="form-control" id="validationTooltip01" placeholder="Filtre projet" #filterdata >
           </form>
         </div>
-      </nav> 
-      <table class="table">  
+      </nav>
+      <div class="contenttable"> 
+      <table class="mytable">  
         <tr>
           <th>Titre</th>
           <th>Date debut</th>
@@ -72,15 +73,17 @@
           <td>{{projet.dateDebutprojet}}</td>
           <td>{{projet.dateFinprojet}}</td>
           <td>{{projet.description}}</td>
-          <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
+          <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
             <img src="../../assets/img/icons8-paramètres-administrateur-homme-96.png" class="btnlist" alt="">
           </button>
           <button class="btn btn-outline-danger">
             <img src="../../assets/img/icons8-supprimer-pour-toujours-48.png" class="btnlist" alt="">
+          </button><button class="btn btn-outline-light">
+            <img src="../../assets/img/icons8-crayon-48.png" class="btnlist" alt="">
           </button></td>
         </tr>
       </table>  
-
+    </div>
     </mat-tab>
 
     
@@ -194,7 +197,7 @@
                   </form>
                 </div>
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
-                  <table class="table">   
+                  <table class="table table-success table-striped-columns">   
                     <tr *ngFor="let sprint of sprints">
                       <td>{{sprint.titremodule}}</td>
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
@@ -245,7 +248,7 @@
                   </form>
                 </div>
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
-                  <table class="table">   
+                  <table class="table table-success table-striped-columns">   
                     <tr *ngFor="let res of ress">
                       <td>{{res.titreres}}</td>
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projetitem" (click)="getprojet(projet.idprojet)" >
@@ -348,7 +351,7 @@
                       </form>
                     </div>
                   </nav> 
-                  <table class="table">   
+                  <table class="table table-success table-striped-columns">   
                     <tr *ngFor="let tache of taches">
                       <td>{{tache.titletache}}</td>
                       <td>{{tache.titretache}}</td>

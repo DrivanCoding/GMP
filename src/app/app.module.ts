@@ -18,6 +18,7 @@ import {  MatGridListModule } from '@angular/material/grid-list'
 import {  MatExpansionModule } from '@angular/material/expansion'
 import {  MatSelectModule } from '@angular/material/select'
 import {  MatBadgeModule } from '@angular/material/badge'
+import {  MatTableModule } from '@angular/material/table'
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -75,7 +76,8 @@ const appRoutes: Routes =[
     MatDialogModule,
     MatGridListModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

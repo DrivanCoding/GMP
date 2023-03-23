@@ -17,14 +17,16 @@
       <div class="equipe">
         
     </div>
-      <table class="table table-primary">
+      <table class="table">
         <tr>
           <th>Nom Equipe</th>
           <th>Option</th>
         </tr>
         <tr *ngFor="let equip of equipe">
           <td>{{equip.nomequipe}}</td>
-          <td> <button  class="btn btn-outline-danger" (click)="delequipe(equip.idequipe)"> <img src="../../assets/img/icons8-supprimer-pour-toujours-48.png" alt=""> </button> </td>
+          <td> <button  class="btn btn-outline-danger btneq" (click)="delequipe(equip.idequipe)"> <img src="../../assets/img/icons8-supprimer-pour-toujours-48.png" alt=""> </button>
+            <button  class="btn btn-outline-acess btneq" (click)="delequipe(equip.idequipe)"> <img src="../../assets/img/icons8-crayon-48.png" alt=""> </button>
+          </td>
         </tr>
       </table>
      

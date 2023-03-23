@@ -39,5 +39,20 @@ router.get('/',getUsers);
 //deuxiemme niveau token
 
  router.get('/profil/:email',Checktoken)
+ rout.erpost("/sendmail", (req, res) => {
+    console.log("request came");
+    let user = req.body;
+    sendMail(user, (err, info) => {
+      if (err) {
+        console.log(err);
+        res.status(400);
+        res.send({ error: "Failed to send email" });
+      } else {
+        
+        console.log("Email has been sent");
+        res.send(info);
+      }
+    });
+  });
 
 module.exports = router
